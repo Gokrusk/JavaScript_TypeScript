@@ -233,7 +233,7 @@ interface Alumno extends PersonaInterface {
   curso: string;
 }
 
-const personaInterace: PersonaInterface = {
+const personaInterface: PersonaInterface = {
   nombre: "Nigell",
   edad: 21,
   dni: "0850106188",
@@ -313,3 +313,20 @@ const ferchon: GenericType<string> = {
 }
 
 
+//*Create an object with PersonaInterface or Alumno, notice the object must have all properties of one of the types
+
+interface PersonInterface {
+  name: string
+  age: number
+  dni: string
+}
+
+interface AlumnoInterface{
+  curso: string
+}
+
+const personita: PersonInterface | AlumnoInterface = {
+  name: "Nigell",
+  dni: '06',
+  age: 34
+}
