@@ -131,6 +131,185 @@ console.log(d);
     const myStr = ""
 */
 
-const myStr = 'I am a "double quoted" string inside "double quotes"'
-console.log(myStr)
+const myStr = 'I am a "double quoted" string inside "double quotes"';
+console.log(myStr);
+
+let hola: string[] = ["a", "b"];
+console.log(hola);
+
+class Vehiculo {
+  private numDoors: number;
+  private speed: number;
+  private model: string;
+
+  constructor(numDoors: number, speed: number, model: string) {
+    this.numDoors = numDoors;
+    this.speed = speed;
+    this.model = model;
+  }
+
+  getNumDoors(): number {
+    return this.numDoors;
+  }
+
+  setNumDoors(numDoors: number) {
+    this.numDoors = numDoors;
+  }
+
+  setSpeed(speed: number) {
+    this.speed = speed;
+  }
+}
+
+const ferrari = new Vehiculo(2, 300, "ferrari");
+
+ferrari.setNumDoors(2);
+console.log(ferrari.getNumDoors());
+
+class Auto extends Vehiculo {
+  private numWheels: number;
+  constructor(
+    numDoors: number,
+    speed: number,
+    model: string,
+    numWheels: number
+  ) {
+    super(numDoors, speed, model);
+    this.numWheels = numWheels;
+  }
+  setNumWheels(numWheels: number) {
+    this.numWheels = numWheels;
+  }
+  getNumDoors(): number {
+    return super.getNumDoors() + 1;
+  }
+}
+
+const ferrar = new Auto(2, 300, "ferrar", 4);
+console.log(ferrar.getNumDoors());
+
+const moto = new Vehiculo(1, 300, "honda");
+
+const arrVehiculos: Vehiculo[] = [ferrar, moto];
+
+for (const vehiculo of arrVehiculos) {
+  console.log(vehiculo.getNumDoors());
+}
+
+class Persona {
+  nombre: string;
+  edad: number;
+
+  constructor(name: string, age: number) {
+    this.nombre = name;
+    this.edad = age;
+  }
+}
+
+class Persona2 {
+  nombre: string;
+  edad: number;
+
+  constructor(name: string, age: number) {
+    this.nombre = name;
+    this.edad = age;
+  }
+}
+
+let persona = new Persona("Nigell", 21);
+let persona2 = new Persona2("Nachel", 21);
+let persona3: Persona = persona2;
+
+interface PersonaInterface {
+  nombre: string;
+  edad: number;
+  dni?: string;
+}
+
+interface Alumno extends PersonaInterface {
+  nombre: string;
+  edad: number;
+  dni: string;
+  curso: string;
+}
+
+const personaInterace: PersonaInterface = {
+  nombre: "Nigell",
+  edad: 21,
+  dni: "0850106188",
+};
+
+const alumnoInterface: Alumno = {
+  nombre: "Nigell",
+  edad: 21,
+  curso: "TypeScript",
+  dni: "06222222",
+};
+
+interface estudiante {
+  nombre: string;
+  edad: number;
+  dni: string;
+  curso: string;
+}
+
+
+//*Utility types
+//?Partial: allows create object with some interface's properties
+const nachel: Partial<Alumno> = {
+  nombre: "Nigell",
+};
+
+//?Required: you must createa a object with all interface's properties
+const fercho: Required<Alumno> = {
+  nombre: "Fernando",
+  edad: 20,
+  curso: "dats",
+  dni: "062222",
+};
+console.log(nachel);
+
+//?ReadOnly: you are not able to edit the properties
+const personaModificable: Readonly<Persona> = {
+  nombre: 'Juan',
+  edad: 30
+}
+
+//personaModificable.nombre = 'xd'
+
+//*Custom Types
+type ReadonlyPerson = Readonly<Persona>
+
+const readPerson: ReadonlyPerson = {
+  nombre: 'a',
+  edad: 3
+}
+
+interface Course{
+  name: string
+  duration: number
+}
+
+interface Gentleman{
+  name: string
+  age: number
+  courses: Course[]
+}
+
+
+//*Generics: you specific the type when you have to use the function
+const logger = <T>(variable: T) =>{
+  console.log(variable)
+}
+
+logger<number>(2)
+
+interface GenericType<T>{
+  variable: T
+}
+
+const ferchon: GenericType<string> = {
+  variable: "a"
+}
+
 
