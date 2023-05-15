@@ -19,4 +19,9 @@ console.log(sub(10,20))
 console.log(mult(10,20))
 console.log(div(10,20))
 
-module.exports.add = add
+module.exports = {
+    add,
+    sub,
+    mult,
+    div
+}
